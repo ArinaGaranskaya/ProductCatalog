@@ -1,0 +1,17 @@
+﻿@model ProductCatalog.Models.Products
+@{
+    ViewBag.Title = "Дополнительные сведения";
+}
+<form asp-action="ViewDetails" asp-controller="home" asp-route-id="@Model.id" >
+    <a>Просмотр дополнительных сведний </a><a></a>
+         <table class="table">
+          <tr><td>Продукт</td><td>Примечание специальное</td></tr>
+          <tr>
+              <td>@Model.product</td>
+              <td>@Model.spnote</td>
+
+          </tr>
+     </table>
+</form>
+
+<a asp-action="ViewProducts">Назад</a>

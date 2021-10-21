@@ -1,0 +1,20 @@
+﻿@model IEnumerable<ProductCatalog.Models.Categorys>
+@{
+    ViewBag.Title = "Справочник категорий";
+}
+<table class="table">
+    <tr><td>№</td><td>Категория</td></tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.id</td>
+    <td>@item.Category</td>
+    <td>
+        <a asp-action="EditCat" asp-controller="Home" asp-route-id="@item.id">Изменить</a> |
+        <a asp-action="DeleteCat" asp-controller="Home" asp-route-id="@item.id">Удалить</a>
+    </td>
+</tr>
+    }
+</table>
+
+<a asp-action="CreateCat">Добавить</a>

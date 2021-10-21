@@ -1,0 +1,35 @@
+﻿@model ProductCatalog.Models.SearchM
+@{
+    ViewBag.Title = "Справочник продуктов";
+}
+<a asp-action="ViewCategory">Перейти к справочнику категорий</a>
+
+<form method="get">
+    <div class="form-inline form-group">
+        <label class="control-label">Продукт:  </label>
+        <input name="prodname" class=" form-control" />
+        <label asp-for="Categor">Категория:  </label>
+        @Html.DropDownList("categoryid", Model.Categor, "Выберите категорию")
+        <input type ="submit" value="Применить" class="btn btn-outline-dark"/>
+    </div>
+
+    <table class="table table-bordered">
+    <tr><td>Наименование продукта</td><td>Категория</td><td>Описание</td><td>Стоимость в рублях</td><td>Примечание общее</td></tr>
+    @foreach (var item in Model.Product)
+    {
+        <tr>
+            <td>@item.product</td>
+            <td>@item.Categorys.Category</td>
+            <td>@item.description</td>
+            <td>@item.price</td>
+            <td>@item.note</td>
+            <td>
+                <a asp-action="ViewDetails" asp-controller="Home" asp-route-id="@item.id">Детали</a> |
+                <a asp-action="EditProd" asp-controller="Home" asp-route-id="@item.id">Изменить</a> |
+                <a asp-action="DeleteProd" asp-controller="Home" asp-route-id="@item.id">Удалить</a>
+            </td>
+        </tr>
+    }
+</table>
+</form>
+<a asp-action="AddProd">Добавить</a>
